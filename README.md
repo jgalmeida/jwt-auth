@@ -1,9 +1,5 @@
-bundle exec rackup -p 1337
-bundle exec rackup -p 9001
+=======
+jwt-auth
+========
 
-http://corsauth.com:1337/
-http://service.corsauth.com:9001/
-
-Edit /etc/hosts
-127.0.0.1 corsauth.com
-127.0.0.1 service.corsauth.com
+POC using JWT to authenticate multiple services with angular and ruby
