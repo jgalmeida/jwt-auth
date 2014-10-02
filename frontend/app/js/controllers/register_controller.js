@@ -2,7 +2,7 @@
 
   var module = angular.module('frontend.controllers');
 
-  var RegisterController = function($scope, $window, $http) {
+  var RegisterController = function($scope, $window, $http, $location) {
 
     $scope.submit = function() {
       $scope.message = '';
@@ -14,6 +14,7 @@
         .success(function(data, status, headers, config) {
           $window.sessionStorage.token = data.token;
           $scope.message = 'Welcome';
+          $location.path('/dashboard');
         })
         .error(function(data, status, headers, config) {
           delete $window.sessionStorage.token;
@@ -23,6 +24,6 @@
     };
   };
 
-  module.controller('registerController', ['$scope', '$window', '$http', RegisterController]);
+  module.controller('registerController', ['$scope', '$window', '$http', '$location', RegisterController]);
 
 })(angular);

@@ -1,5 +1,5 @@
 class Todo
-  attr_accessor :id, :description
+  attr_accessor :id, :user_id, :description
 
   def initialize(attributes)
     @description = attributes[:description]

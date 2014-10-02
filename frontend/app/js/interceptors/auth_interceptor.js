@@ -15,6 +15,7 @@
       response: function (response) {
         if (response.status === 401) {
           $location.path('/login');
+          return $q.reject(response.statusText);
         }
 
         return response || $q.when(response);
@@ -22,9 +23,8 @@
       responseError: function (response) {
         if (response.status === 401) {
           $location.path('/login');
+          return $q.reject(response.statusText);
         }
-
-        debugger
 
         return response || $q.when(response);
       }

@@ -8,11 +8,21 @@
     $routeProvider.
       when('/login', {
         templateUrl: 'login.html',
-        controller: 'loginController'
+        controller: 'loginController',
+        resolve: {
+          auth: function($q, $location) {
+            return $location.path('/dashboard');
+          }
+        }
       })
       .when('/register', {
         templateUrl: 'register.html',
-        controller: 'registerController'
+        controller: 'registerController',
+        resolve: {
+          auth: function($q, $location) {
+            return $location.path('/dashboard');
+          }
+        }
       })
       .when('/todos', {
         templateUrl: 'todos/index.html',

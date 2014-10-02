@@ -4,13 +4,14 @@ class App < Sinatra::Base
     authenticate!
 
     status 200
-    TodoRepository.find_by_user(current_user_id)
+    json TodoRepository.find_by_user(current_user_id)
   end
 
   post '/todos' do
     authenticate!
 
     todo = Todo.new(params)
+    todo.user_id = current_user_id
 
     if TodoRepository.save(todo)
       status 200

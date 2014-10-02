@@ -2,7 +2,7 @@
 
   var module = angular.module('frontend.controllers');
 
-  var TodosController = function($scope, $window, $http, todoService) {
+  var TodosController = function($scope, $window, $http, $location, todoService) {
     $scope.todos = todoService.query();
 
     $scope.submit = function() {
@@ -10,17 +10,14 @@
 
       var params = { description: $scope.description };
 
-      todoService.save(params)
-        .success(function(data, status, headers, config) {
-          $scope.todos.push(data);
-          $scope.message = 'Success';
-        })
-        .error(function(data, status, headers, config) {
-          $scope.message = 'Error: params';
-        });
+      todoService.save(params, function(data) {
+        $scope.todos.push(data);
+        $scope.message = 'Success';
+        $location.path('/todos');
+      });
     };
   };
 
-  module.controller('todosController', ['$scope', '$window', '$http', 'todoService', TodosController]);
+  module.controller('todosController', ['$scope', '$window', '$http', '$location', 'todoService', TodosController]);
 
 })(angular);

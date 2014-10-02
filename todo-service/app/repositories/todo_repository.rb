@@ -4,11 +4,11 @@ class TodoRepository
     @@todos   = []
 
     def find_by_id(id)
-      @@todos.find { |t| t.id == id }
+      @@todos.select { |t| t.id == id }
     end
 
     def find_by_user(user)
-      @@todos.find { |t| t.user == user }
+      @@todos.select { |t| t.user_id == user }
     end
 
     def list
