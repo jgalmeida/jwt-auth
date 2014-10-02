@@ -2,7 +2,6 @@
   var app = angular.module('frontend', ['ngResource', 'ngRoute', 'frontend.services', 'frontend.controllers', 'frontend.interceptors']);
 
   app.config(['$httpProvider', '$routeProvider', function ($httpProvider, $routeProvider) {
-    $httpProvider.defaults.withCredentials = true;
     $httpProvider.interceptors.push('authInjector');
 
     $routeProvider.
@@ -10,8 +9,10 @@
         templateUrl: 'login.html',
         controller: 'loginController',
         resolve: {
-          auth: function($q, $location) {
-            return $location.path('/dashboard');
+          auth: function($q, $location, authService) {
+            if(authService.isAuthenticated()) {
+              return $location.path('/dashboard');
+            }
           }
         }
       })
@@ -19,21 +20,44 @@
         templateUrl: 'register.html',
         controller: 'registerController',
         resolve: {
-          auth: function($q, $location) {
-            return $location.path('/dashboard');
+          auth: function($q, $location, authService) {
+            if(authService.isAuthenticated()) {
+              return $location.path('/dashboard');
+            }
           }
         }
       })
       .when('/todos', {
         templateUrl: 'todos/index.html',
-        controller: 'todosController'
+        controller: 'todosController',
+        resolve: {
+          auth: function($q, $location, authService) {
+            if(!authService.isAuthenticated()) {
+              authService.logout();
+            }
+          }
+        }
       })
       .when('/todos/new', {
         templateUrl: 'todos/new.html',
-        controller: 'todosController'
+        controller: 'todosController',
+        resolve: {
+          auth: function($q, $location, authService) {
+            if(!authService.isAuthenticated()) {
+              authService.logout();
+            }
+          }
+        }
       })
       .when('/dashboard', {
-        templateUrl: 'dashboard.html'
+        templateUrl: 'dashboard.html',
+        resolve: {
+          auth: function($q, $location, authService) {
+            if(!authService.isAuthenticated()) {
+              authService.logout();
+            }
+          }
+        }
       })
       .otherwise({
         redirectTo: '/login'

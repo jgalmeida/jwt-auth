@@ -10,7 +10,7 @@ module Sinatra
       end
 
       def current_user_id
-        env['payload']['user_id'].to_i
+        env['payload']['current_user'].to_i
       end
 
     end

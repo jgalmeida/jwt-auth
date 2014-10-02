@@ -9,6 +9,7 @@
     <script type="text/javascript" src="<%= js %>"></script>
 
     <div ng-app="frontend">
+      <a href ng-click="logout();" ng-controller="applicationController">Logout</a>
       <div ng-view>
       </div>
     </div>

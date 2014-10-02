@@ -1,7 +1,7 @@
 (function(angular) {
   var module = angular.module('frontend.interceptors');
 
-  module.factory('authInjector', ['$q', '$window', '$location', function ($q, $window, $location) {
+  module.factory('authInjector', ['$q', '$location', '$window', function ($q, $location, $window) {
     return {
       request: function (config) {
         config.headers = config.headers || {};
@@ -12,17 +12,15 @@
 
         return config;
       },
-      response: function (response) {
-        if (response.status === 401) {
-          $location.path('/login');
-          return $q.reject(response.statusText);
-        }
 
-        return response || $q.when(response);
-      },
       responseError: function (response) {
         if (response.status === 401) {
           $location.path('/login');
+          delete $window.sessionStorage.token;
+          return $q.reject(response.statusText);
+        }
+
+        if(response.status >= 400) {
           return $q.reject(response.statusText);
         }
 

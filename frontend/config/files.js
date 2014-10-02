@@ -16,7 +16,9 @@ module.exports = function(lineman) {
         'app/js/modules/controllers.js',
         'app/js/modules/interceptors.js',
         'app/js/services/todo_service.js',
+        'app/js/services/auth_service.js',
         'app/js/interceptors/auth_interceptor.js',
+        'app/js/controllers/application_controller.js',
         'app/js/controllers/login_controller.js',
         'app/js/controllers/register_controller.js',
         'app/js/controllers/todos_controller.js'

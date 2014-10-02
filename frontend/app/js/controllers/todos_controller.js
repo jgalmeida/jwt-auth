@@ -2,7 +2,7 @@
 
   var module = angular.module('frontend.controllers');
 
-  var TodosController = function($scope, $window, $http, $location, todoService) {
+  var TodosController = function($scope, $location, todoService) {
     $scope.todos = todoService.query();
 
     $scope.submit = function() {
@@ -18,6 +18,6 @@
     };
   };
 
-  module.controller('todosController', ['$scope', '$window', '$http', '$location', 'todoService', TodosController]);
+  module.controller('todosController', ['$scope', '$location', 'todoService', TodosController]);
 
 })(angular);

@@ -2,28 +2,26 @@
 
   var module = angular.module('frontend.controllers');
 
-  var RegisterController = function($scope, $window, $http, $location) {
+  var RegisterController = function($scope, $location, authService) {
 
     $scope.submit = function() {
       $scope.message = '';
 
       var params = { email: $scope.email, password: $scope.password };
 
-      $http
-        .post('http://user.service.com:9001/register', params)
-        .success(function(data, status, headers, config) {
-          $window.sessionStorage.token = data.token;
-          $scope.message = 'Welcome';
-          $location.path('/dashboard');
-        })
-        .error(function(data, status, headers, config) {
-          delete $window.sessionStorage.token;
+      function success(data, status, headers, config) {
+        $scope.message = 'Welcome';
+        $location.path('/dashboard');
+      }
 
-          $scope.message = 'Error: Invalid username or password';
-        });
+      function error(data, status, headers, config) {
+        $scope.message = 'Error: Invalid username or password';
+      }
+
+      authService.register(params, success, error);
     };
   };
 
-  module.controller('registerController', ['$scope', '$window', '$http', '$location', RegisterController]);
+  module.controller('registerController', ['$scope', '$location', 'authService', RegisterController]);
 
 })(angular);

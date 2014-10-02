@@ -4,11 +4,11 @@ class UserRepository
     @@users   = []
 
     def find_by_id(id)
-      @@users.select { |u| u.id == id }
+      @@users.find { |u| u.id == id }
     end
 
     def find_by_email(email)
-      @@users.select { |u| u.email == email }
+      @@users.find { |u| u.email == email }
     end
 
     def list
