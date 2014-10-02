@@ -13,7 +13,7 @@ require 'app'
 
 use Rack::Cors do
   allow do
-    origins 'http://frontend.com:8000'
+    origins 'http://localhost:8000'
     resource '/*', :headers => :any, :methods => :post
   end
 end

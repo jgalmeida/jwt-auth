@@ -9,7 +9,7 @@
 
     function register(params, success, error) {
       $http
-        .post('http://user.service.com:9001/register', params)
+        .post('http://localhost:9001/register', params)
         .success(function(data, status, headers, config) {
           $window.sessionStorage.token = data.token;
           success(data, status, headers, config);
@@ -22,7 +22,7 @@
 
     function authenticate(params, success, error) {
       $http
-        .post('http://user.service.com:9001/authenticate', params)
+        .post('http://localhost:9001/authenticate', params)
         .success(function(data, status, headers, config) {
           $window.sessionStorage.token = data.token;
           success(data, status, headers, config);

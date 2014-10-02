@@ -6,7 +6,7 @@
   }]);
 
   function TodoRestService($resource) {
-    return $resource('http://todo.service.com:9002/todos');
+    return $resource('http://localhost:9002/todos');
   }
 
 })(angular);
