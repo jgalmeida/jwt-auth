@@ -55,5 +55,11 @@ module.exports = function(lineman) {
     //
     // livereload: true
 
+    ngtemplates: {
+       options: {
+         module: "frontend"
+       }
+     }
+
   };
 };

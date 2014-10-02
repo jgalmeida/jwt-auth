@@ -15,7 +15,11 @@
         controller: 'registerController'
       })
       .when('/todos', {
-        templateUrl: 'todos.html',
+        templateUrl: 'todos/index.html',
+        controller: 'todosController'
+      })
+      .when('/todos/new', {
+        templateUrl: 'todos/new.html',
         controller: 'todosController'
       })
       .when('/dashboard', {

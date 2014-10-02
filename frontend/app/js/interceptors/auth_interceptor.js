@@ -7,7 +7,7 @@
         config.headers = config.headers || {};
 
         if ($window.sessionStorage.token) {
-          config.headers.HTTP_AUTHORIZATION = $window.sessionStorage.token;
+          config.headers.AUTHORIZATION = $window.sessionStorage.token;
         }
 
         return config;
@@ -16,6 +16,15 @@
         if (response.status === 401) {
           $location.path('/login');
         }
+
+        return response || $q.when(response);
+      },
+      responseError: function (response) {
+        if (response.status === 401) {
+          $location.path('/login');
+        }
+
+        debugger
 
         return response || $q.when(response);
       }

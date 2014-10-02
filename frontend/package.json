@@ -10,5 +10,8 @@
   "scripts": {
     "start": "lineman run",
     "test": "lineman spec-ci"
+  },
+  "dependencies": {
+    "lineman-angular": "~0.3.0"
   }
 }
