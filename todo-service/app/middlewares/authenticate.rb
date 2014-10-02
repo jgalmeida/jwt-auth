@@ -20,7 +20,7 @@ class Authenticate
   def with_authorization(header)
     payload = AuthToken.valid?(header)
 
-    return [ 401, {}, ['Invalid Authorization']] unless payload
+    return [401, {}, ['Invalid Authorization']] unless payload
 
     yield payload
   end
