@@ -4,25 +4,31 @@ jwt-auth
 
 POC using JWT to authenticate multiple services with angular and ruby
 
-cd user-service
+#### Instructions
+  
+**User service**
 
-bundle
+````
+  cd user-service
+  bundle
+  bundle exec rackup -p 9001
+````
+  
+**Todo service**
+  
 
-bundle exec rackup -p 9001
+````
+  cd todo-service  
+  bundle
+  bundle exec rackup -p 9002
+````
 
+**Frontend**
 
-cd todo-service
+````
+  cd frontend
+  npm install
+  npm start
+````
 
-bundle
-
-bundle exec rackup -p 9002
-
-
-cd frontend
-
-npm install
-
-npm start
-
-
-http://localhost:8000
+####Access: http://localhost:8000
