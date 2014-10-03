@@ -3,13 +3,20 @@
   <head>
     <title><%= pkg.name %></title>
 
-    <link rel="stylesheet" type="text/css" href="<%= css %>" media="all" />
+    <link rel='stylesheet' type='text/css' href='<%= css %>' media='all' />
   </head>
   <body>
-    <script type="text/javascript" src="<%= js %>"></script>
+    <script type='text/javascript' src='<%= js %>'></script>
 
-    <div ng-app="frontend">
-      <a href ng-click="logout();" ng-controller="applicationController">Logout</a>
+    <div ng-app='frontend' style='padding: 50px 100px;'>
+      <nav class='navbar navbar-inverse' role='navigation'>
+        <div class='container-fluid'>
+          <div class='navbar-header'>
+            <a class='navbar-brand' href='/#/dashboard'>Dashboard</a>
+            <a href ng-click='logout();' ng-controller='applicationController' class='navbar-brand'>Logout</a>
+          </div>
+        </div>
+      </nav>
       <div ng-view>
       </div>
     </div>

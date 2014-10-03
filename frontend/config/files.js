@@ -24,10 +24,20 @@ module.exports = function(lineman) {
         'app/js/controllers/todos_controller.js'
       ],
       vendor: [
+        'vendor/js/jquery-2.1.1.js',
         'vendor/js/underscore.js',
         'vendor/js/angular.js',
         'vendor/js/angular-route.js',
-        'vendor/js/angular-resource.js'
+        'vendor/js/angular-resource.js',
+        'vendor/js/bootstrap.js'
+      ]
+    },
+    css: {
+      app: [
+        'app/css/**/*.css'
+      ],
+      vendor: [
+        'vendor/css/**/*.css'
       ]
     }
 

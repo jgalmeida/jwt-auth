@@ -1,7 +1,24 @@
-<ul>
-  <li ng-repeat="todo in todos">
-    <p>Id: {{ todo.id }} - Description: {{ todo.description }} - User {{todo.user_id}}</p>
-  </li>
-</ul>
+<div class="container">
+  <h1>Listing {{todos.length}} Todos</h1>
+  <h4><a href='/#/todos/new'>Add new</a></h4>
 
-<a href='/#/todos/new'>Create new</a>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Description</th>
+        <th>User</th>
+      </tr>
+    </thead>
+
+  <h1>Todos size -> {{todos.length}}</h1>
+
+    <tbody>
+      <tr ng-repeat="todo in todos">
+        <td>{{ todo.id          }}</td>
+        <td>{{ todo.description }}</td>
+        <td>{{ todo.user_id     }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,10 +1,15 @@
-<div>
-  <span></span>
-  <form ng-submit="submit()">
-    <input ng-model="email" type="text" name="email" placeholder="Email" />
-    <input ng-model="password" type="password" name="pass" placeholder="Password" />
-    <input type="submit" value="Register" />
-  </form>
-</div>
+<form ng-submit="submit()" role="form">
+  <fieldset>
+    <ul>
+      <div>
+        <input ng-model="email" type="text" name="email" placeholder="Email" class="form-control" />
+      </div>
+      <div>
+        <input ng-model="password" type="password" name="pass" placeholder="Password" class="form-control" />
+      </div>
+    </ul>
+  </fieldset>
+  <input type="submit" value="Register" class="btn btn-primary" />
+</form>
 
 {{message}}
