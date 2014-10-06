@@ -49,6 +49,28 @@
           }
         }
       })
+      .when('/brands', {
+        templateUrl: 'brands/index.html',
+        controller: 'brandsController',
+        resolve: {
+          auth: function($q, $location, authService) {
+            if(!authService.isAuthenticated()) {
+              authService.logout();
+            }
+          }
+        }
+      })
+      .when('/brands/new', {
+        templateUrl: 'brands/new.html',
+        controller: 'brandsController',
+        resolve: {
+          auth: function($q, $location, authService) {
+            if(!authService.isAuthenticated()) {
+              authService.logout();
+            }
+          }
+        }
+      })
       .when('/dashboard', {
         templateUrl: 'dashboard.html',
         resolve: {
