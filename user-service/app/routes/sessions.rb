@@ -4,7 +4,8 @@ class App < Sinatra::Base
     user = User.new(params)
 
     if UserRepository.save(user)
-      token = AuthToken.issue_token({current_user: user.id, layer_token: 'userservicetoken'})
+      current_user = { uid: user.id, layer_token: 'userservicetoken' }
+      token = AuthToken.issue_token({current_user: current_user})
 
       status 200
       json current_user: user.id, token: token
@@ -18,7 +19,8 @@ class App < Sinatra::Base
     user = UserRepository.find_by_email(params[:email])
 
     if user && user.authenticate(params[:password])
-      token = AuthToken.issue_token({current_user: user.id, layer_token: 'userservicetoken'})
+      current_user = { uid: user.id, layer_token: 'userservicetoken' }
+      token = AuthToken.issue_token({current_user: current_user})
 
       status 200
       json current_user: user.id, token: token
